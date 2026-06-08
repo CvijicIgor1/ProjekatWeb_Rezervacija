@@ -104,6 +104,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="App_Data\korisnici.json" />
+    <Content Include="App_Data\objekti.json" />
+    <Content Include="App_Data\rezervacija.json" />
+    <Content Include="App_Data\rezencija.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -113,7 +117,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>

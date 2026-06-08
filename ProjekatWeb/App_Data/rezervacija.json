@@ -1,0 +1,68 @@
+[
+  {
+    "Id": "rez-001",
+    "SmestajniObjekatId": "obj-001",
+    "Gost": "marija.nikolic",
+    "DatumPrijave": "01/03/2024",
+    "DatumOdjave": "05/03/2024",
+    "BrojGostiju": 2,
+    "UkupnaCena": 300.00,
+    "Status": 3,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-002",
+    "SmestajniObjekatId": "obj-003",
+    "Gost": "marija.nikolic",
+    "DatumPrijave": "15/04/2024",
+    "DatumOdjave": "18/04/2024",
+    "BrojGostiju": 2,
+    "UkupnaCena": 360.00,
+    "Status": 3,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-003",
+    "SmestajniObjekatId": "obj-002",
+    "Gost": "stefan.jovic",
+    "DatumPrijave": "10/05/2024",
+    "DatumOdjave": "13/05/2024",
+    "BrojGostiju": 1,
+    "UkupnaCena": 135.00,
+    "Status": 3,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-004",
+    "SmestajniObjekatId": "obj-005",
+    "Gost": "ana.popovic",
+    "DatumPrijave": "20/06/2024",
+    "DatumOdjave": "23/06/2024",
+    "BrojGostiju": 3,
+    "UkupnaCena": 54.00,
+    "Status": 3,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-005",
+    "SmestajniObjekatId": "obj-004",
+    "Gost": "nikola.ilic",
+    "DatumPrijave": "05/07/2024",
+    "DatumOdjave": "10/07/2024",
+    "BrojGostiju": 4,
+    "UkupnaCena": 475.00,
+    "Status": 3,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-006",
+    "SmestajniObjekatId": "obj-001",
+    "Gost": "nikola.ilic",
+    "DatumPrijave": "25/07/2026",
+    "DatumOdjave": "28/07/2026",
+    "BrojGostiju": 2,
+    "UkupnaCena": 225.00,
+    "Status": 1,
+    "Obrisana": false
+  }
+]

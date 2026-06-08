@@ -1,0 +1,68 @@
+[
+  {
+    "Id": "rec-001",
+    "SmestajniObjekatId": "obj-001",
+    "RecenzentKorisnickoIme": "marija.nikolic",
+    "Naslov": "Odlican apartman, preporucujem!",
+    "Sadrzaj": "Apartman je bio savrseno cist i opremljen. Domacin je bio veoma ljubazan i odmah odgovarao na poruke. Lokacija je fantasticna, sve je nadohvat ruke. Definitivno cu se vratiti!",
+    "Ocena": 5,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-002",
+    "SmestajniObjekatId": "obj-001",
+    "RecenzentKorisnickoIme": "nikola.ilic",
+    "Naslov": "Prijatno iskustvo",
+    "Sadrzaj": "Apartman je lepo sredjeno mesto u centru grada. Jedina zamerka je sto parking ponekad bude zauzet, ali inace sve je bilo na visokom nivou.",
+    "Ocena": 3,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-003",
+    "SmestajniObjekatId": "obj-002",
+    "RecenzentKorisnickoIme": "stefan.jovic",
+    "Naslov": "Dobra lokacija, malo manji prostor",
+    "Sadrzaj": "Studio je funkcionalan i cist, lokacija je odlicna za obilazak centra. Malo je manji nego sto se cini na slikama, ali za jednu osobu sasvim dovoljno.",
+    "Ocena": 3,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-004",
+    "SmestajniObjekatId": "obj-003",
+    "RecenzentKorisnickoIme": "marija.nikolic",
+    "Naslov": "Predivan odmor na Zlatiboru",
+    "Sadrzaj": "Hotel je moderan i veoma udoban. Dorucak je bio bogatiji nego sto smo ocekivali, osoblje ljubazno i pazljivo. Pogled sa terase je neverovatno lep posebno ujutru.",
+    "Ocena": 5,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-005",
+    "SmestajniObjekatId": "obj-005",
+    "RecenzentKorisnickoIme": "ana.popovic",
+    "Naslov": "Super za budzet putovanje",
+    "Sadrzaj": "Za cenu koju platis dobijas zaista puno. Osoblje je prijatno, hostel je cist i bezbedan. Upoznala sam sjajne ljude iz raznih zemalja. Preporuka za sve putnike koji traze jeftino a kvalitetno.",
+    "Ocena": 4,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-006",
+    "SmestajniObjekatId": "obj-004",
+    "RecenzentKorisnickoIme": "nikola.ilic",
+    "Naslov": "Fantasticna vikendica na Tari",
+    "Sadrzaj": "Proveli smo nezaboravnih 5 dana. Vikendica je tacno onakva kao na slikama, kamin radi odlicno, rostilj je opremljen. Priroda je predivna. Jedino WiFi signal ponekad nije bio jak.",
+    "Ocena": 5,
+    "Slika": null,
+    "Status": 0,
+    "Obrisana": false
+  }
+]
