@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -101,6 +104,10 @@
     <Compile Include="Models\Rezervacija.cs" />
     <Compile Include="Models\Smestajni_objekat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\KorisnikService.cs" />
+    <Compile Include="Services\ObjektiService.cs" />
+    <Compile Include="Services\RecenzijaService.cs" />
+    <Compile Include="Services\RezervacijaService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
