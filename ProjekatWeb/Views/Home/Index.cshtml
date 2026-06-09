@@ -1,0 +1,463 @@
+@model List<ProjekatWeb.Models.Smestajni_objekat>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+       
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .nav-links .btn-login {
+            background: #e94560;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            margin-left: 20px;
+        }
+
+            .nav-links .btn-login:hover {
+                opacity: 0.9;
+                color: white;
+            }
+
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+            .hero h1 {
+                font-size: 42px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+                .hero h1 span {
+                    color: #e94560;
+                }
+
+            .hero p {
+                color: rgba(255,255,255,0.6);
+                font-size: 16px;
+                margin-bottom: 35px;
+            }
+
+       
+        .search-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+            .search-row input,
+            .search-row select {
+                flex: 1;
+                min-width: 140px;
+                padding: 11px 14px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 14px;
+                outline: none;
+            }
+
+                .search-row input::placeholder {
+                    color: rgba(255,255,255,0.35);
+                }
+
+                .search-row select option {
+                    background: #16213e;
+                }
+
+                .search-row input:focus,
+                .search-row select:focus {
+                    border-color: #e94560;
+                }
+
+        .btn-search {
+            padding: 11px 30px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+            .btn-search:hover {
+                opacity: 0.9;
+            }
+
+        .btn-reset {
+            padding: 11px 20px;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+            .btn-reset:hover {
+                background: rgba(255,255,255,0.15);
+            }
+
+        
+        .sort-bar {
+            max-width: 1200px;
+            margin: 30px auto 20px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+            .sort-bar span {
+                color: rgba(255,255,255,0.5);
+                font-size: 14px;
+            }
+
+            .sort-bar select {
+                padding: 8px 14px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 14px;
+                outline: none;
+                cursor: pointer;
+            }
+
+                .sort-bar select option {
+                    background: #16213e;
+                }
+
+        .results-count {
+            margin-left: auto;
+            color: rgba(255,255,255,0.4);
+            font-size: 14px;
+        }
+
+        
+        .grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: rgba(255,255,255,0.2);
+        }
+
+            .card-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .card-body {
+            padding: 18px;
+        }
+
+        .card-tip {
+            font-size: 11px;
+            color: #e94560;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .card-naziv {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .card-grad {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .card-opis {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 14px;
+        }
+
+        .card-cena {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+            .card-cena span {
+                font-size: 13px;
+                color: rgba(255,255,255,0.4);
+                font-weight: 400;
+            }
+
+        .card-gosti {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+        }
+
+        .btn-rezervisi {
+            display: block;
+            text-align: center;
+            margin-top: 14px;
+            padding: 10px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+            .btn-rezervisi:hover {
+                opacity: 0.9;
+                color: white;
+            }
+
+       
+        .empty {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(255,255,255,0.3);
+            grid-column: 1 / -1;
+        }
+
+            .empty p {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">&#127968; StayFinder</div>
+        <div class="nav-links">
+            @if (Session["korisnik"] != null)
+            {
+                <a href="#">Hello, @Session["korisnik"]</a>
+
+                if (Session["tip"].ToString() == "Gost")
+                {
+                    <a href="/Gost/Profil">My Profile</a>
+                }
+                else if (Session["tip"].ToString() == "Domacin")
+                {
+                    <a href="/Domacin/Profil">My Properties</a>
+                }
+                else if (Session["tip"].ToString() == "Administrator")
+                {
+                    <a href="/Admin/Index">Admin Panel</a>
+                }
+
+                <a href="/Korisnik/Odjava" class="btn-login">Sign Out</a>
+            }
+            else
+            {
+                <a href="/Korisnik/Login">Sign In</a>
+                <a href="/Korisnik/Registracija" class="btn-login">Register</a>
+            }
+        </div>
+    </nav>
+
+    
+    <div class="hero">
+        <h1>Find Your Perfect <span>Stay</span></h1>
+        <p>BOOK YOUR NEXT TRIP HERE AND ENJOY IT</p>
+
+        <div class="search-box">
+            <form method="get" action="/Home/Index">
+                <div class="search-row">
+                    <input type="text" name="naziv" placeholder="Search by name..." value="@ViewBag.naziv" />
+                    <input type="text" name="grad" placeholder="City..." value="@ViewBag.grad" />
+                    <select name="tip">
+                        <option value="">All Types</option>
+                        <option value="Hotel" @(ViewBag.tip == "Hotel" ? "selected" : "")>Hotel</option>
+                        <option value="Apartman" @(ViewBag.tip == "Apartman" ? "selected" : "")>Apartment</option>
+                        <option value="Hostel" @(ViewBag.tip == "Hostel" ? "selected" : "")>Hostel</option>
+                    </select>
+                </div>
+                <div class="search-row">
+                    <input type="number" name="cenaMin" placeholder="Min price..." value="@ViewBag.cenaMin" />
+                    <input type="number" name="cenaMax" placeholder="Max price..." value="@ViewBag.cenaMax" />
+                    <button type="submit" class="btn-search">Search</button>
+                    <a href="/Home/Index" class="btn-reset">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <div class="sort-bar">
+        <span>Sort by:</span>
+        <form method="get" action="/Home/Index" id="sortForm">
+            <input type="hidden" name="naziv" value="@ViewBag.naziv" />
+            <input type="hidden" name="grad" value="@ViewBag.grad" />
+            <input type="hidden" name="tip" value="@ViewBag.tip" />
+            <input type="hidden" name="cenaMin" value="@ViewBag.cenaMin" />
+            <input type="hidden" name="cenaMax" value="@ViewBag.cenaMax" />
+            <select name="sortBy" onchange="document.getElementById('sortForm').submit()">
+                <option value="">Default</option>
+                <option value="naziv_asc" @(ViewBag.sortBy == "naziv_asc" ? "selected" : "")>Name A-Z</option>
+                <option value="naziv_desc" @(ViewBag.sortBy == "naziv_desc" ? "selected" : "")>Name Z-A</option>
+                <option value="cena_asc" @(ViewBag.sortBy == "cena_asc" ? "selected" : "")>Price Low-High</option>
+                <option value="cena_desc" @(ViewBag.sortBy == "cena_desc" ? "selected" : "")>Price High-Low</option>
+                <option value="datum_asc" @(ViewBag.sortBy == "datum_asc" ? "selected" : "")>Oldest First</option>
+                <option value="datum_desc" @(ViewBag.sortBy == "datum_desc" ? "selected" : "")>Newest First</option>
+            </select>
+        </form>
+        <span class="results-count">@Model.Count result(s)</span>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid">
+        @if (Model.Count == 0)
+        {
+            <div class="empty">
+                <p>No accommodations found.</p>
+            </div>
+        }
+        else
+        {
+            foreach (var o in Model)
+            {
+                <div class="card">
+                    <div class="card-img">
+                        @if (!string.IsNullOrEmpty(o.Slika))
+                        {
+                            <img src="@o.Slika" alt="@o.Naziv" />
+                        }
+                        else
+                        {
+                            <span>&#127968;</span>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <div class="card-tip">@o.Tip</div>
+                        <div class="card-naziv">@o.Naziv</div>
+                        <div class="card-grad">&#128205; @o.Grad</div>
+                        <div class="card-opis">@o.Opis</div>
+                        <div class="card-footer">
+                            <div class="card-cena">$@o.Cena_po_noci <span>/ night</span></div>
+                            <div class="card-gosti">max @o.Maksimalan_broj_gostiju guests</div>
+                        </div>
+                        @if (Session["tip"] != null && Session["tip"].ToString() == "Gost")
+                        {
+                            <a href="/Gost/KreirajRezervaciju?objekatId=@o.Id" class="btn-rezervisi">Reserve Now</a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+</body>
+</html>

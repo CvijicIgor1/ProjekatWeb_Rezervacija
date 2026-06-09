@@ -185,5 +185,18 @@
     "Obrisan": false,
     "RezervacijaIds": [],
     "ObjektiIds": []
+  },
+  {
+    "KorisnickoIme": "pera",
+    "Lozinka": "pera",
+    "Ime": "pera",
+    "Prezime": "peric",
+    "Email": "Peric@gmail.com",
+    "DatumRodjenja": "15/03/2000",
+    "Pol": "Male",
+    "TipKorisnika": 0,
+    "Obrisan": false,
+    "RezervacijaIds": [],
+    "ObjektiIds": []
   }
 ]
