@@ -36,7 +36,10 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [ "obj-001", "obj-002" ]
+    "ObjektiIds": [
+      "obj-001",
+      "obj-002"
+    ]
   },
   {
     "KorisnickoIme": "ivana.lukic",
@@ -49,7 +52,10 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [ "obj-003", "obj-004" ]
+    "ObjektiIds": [
+      "obj-003",
+      "obj-004"
+    ]
   },
   {
     "KorisnickoIme": "zoran.milic",
@@ -62,7 +68,9 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [ "obj-005" ]
+    "ObjektiIds": [
+      "obj-005"
+    ]
   },
   {
     "KorisnickoIme": "marija.nikolic",
@@ -74,7 +82,10 @@
     "Pol": "Zenski",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [ "rez-001", "rez-002" ],
+    "RezervacijaIds": [
+      "rez-001",
+      "rez-002"
+    ],
     "ObjektiIds": []
   },
   {
@@ -87,7 +98,9 @@
     "Pol": "Muski",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [ "rez-003" ],
+    "RezervacijaIds": [
+      "rez-003"
+    ],
     "ObjektiIds": []
   },
   {
@@ -100,7 +113,9 @@
     "Pol": "Zenski",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [ "rez-004" ],
+    "RezervacijaIds": [
+      "rez-004"
+    ],
     "ObjektiIds": []
   },
   {
@@ -113,7 +128,10 @@
     "Pol": "Muski",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [ "rez-005", "rez-006" ],
+    "RezervacijaIds": [
+      "rez-005",
+      "rez-006"
+    ],
     "ObjektiIds": []
   },
   {
@@ -150,6 +168,19 @@
     "Email": "tamara.vukovic@gmail.com",
     "DatumRodjenja": "19/04/1988",
     "Pol": "Zenski",
+    "TipKorisnika": 0,
+    "Obrisan": false,
+    "RezervacijaIds": [],
+    "ObjektiIds": []
+  },
+  {
+    "KorisnickoIme": "Pera",
+    "Lozinka": "pera",
+    "Ime": "Petar",
+    "Prezime": "Peric",
+    "Email": "Peric@gmail.com",
+    "DatumRodjenja": "12/07/2010",
+    "Pol": "Male",
     "TipKorisnika": 0,
     "Obrisan": false,
     "RezervacijaIds": [],

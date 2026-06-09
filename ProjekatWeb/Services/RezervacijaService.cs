@@ -9,7 +9,7 @@ namespace ProjekatWeb.Services
 {
     public class RezervacijaService
     {
-        private string putanja = HttpContext.Current.Server.MapPath("~/App_Data/rezervacija.json");
+        private string putanja => HttpContext.Current.Server.MapPath("~/App_Data/rezervacija.json");
 
         public List<Rezervacija> GetSve()
         {

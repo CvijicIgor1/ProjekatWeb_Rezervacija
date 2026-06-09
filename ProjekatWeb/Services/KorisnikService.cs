@@ -9,7 +9,7 @@ namespace ProjekatWeb.Services
 {
     public class KorisnikService
     {
-        private string putanja = HttpContext.Current.Server.MapPath("~/App_Data/korisnici.json");
+        private string putanja => HttpContext.Current.Server.MapPath("~/App_Data/korisnici.json");
 
 
         public List<Korisnik> GetSvi()

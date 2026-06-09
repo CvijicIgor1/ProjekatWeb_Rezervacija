@@ -9,7 +9,7 @@ namespace ProjekatWeb.Services
 {
     public class ObjektiService
     {
-        private string putanja = HttpContext.Current.Server.MapPath("~/App_Data/objekti.json");
+        private string putanja => HttpContext.Current.Server.MapPath("~/App_Data/objekti.json");
 
 
         public List<Smestajni_objekat> GetSvi()
