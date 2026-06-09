@@ -1,0 +1,205 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leave a Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .subtitle {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+            .input-group label {
+                display: block;
+                color: rgba(255,255,255,0.6);
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .input-group input, .input-group textarea, .input-group select {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 15px;
+                outline: none;
+                font-family: inherit;
+            }
+
+                .input-group input:focus, .input-group textarea:focus {
+                    border-color: #e94560;
+                }
+
+            .input-group textarea {
+                resize: vertical;
+                min-height: 100px;
+            }
+
+            .input-group select option {
+                background: #16213e;
+            }
+
+        .stars {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+            .stars input[type="radio"] {
+                display: none;
+            }
+
+            .stars label {
+                font-size: 30px;
+                cursor: pointer;
+                color: rgba(255,255,255,0.2);
+                transition: color 0.2s;
+            }
+
+                .stars input[type="radio"]:checked ~ label,
+                .stars label:hover,
+                .stars label:hover ~ label {
+                    color: #ffc800;
+                }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+            button:hover {
+                opacity: 0.9;
+            }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Home/Index">&#127968; StayFinder</a>
+        <div class="nav-links">
+            <a href="/Gost/Rezervacije">My Reservations</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="/Gost/Rezervacije" class="btn-back">&#8592; Back to reservations</a>
+        <h2>Review <span>@ViewBag.ObjekatNaziv</span></h2>
+        <p class="subtitle">Share your experience</p>
+
+        <div class="card">
+            <form method="post" action="/Gost/DodajRecenziju">
+                <input type="hidden" name="objekatId" value="@ViewBag.ObjekatId" />
+                <div class="input-group">
+                    <label>Title</label>
+                    <input type="text" name="naslov" placeholder="Great stay!" required />
+                </div>
+                <div class="input-group">
+                    <label>Your Review</label>
+                    <textarea name="sadrzaj" placeholder="Tell us about your experience..." required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Rating</label>
+                    <select name="ocena" required>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="1">1 - Poor</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
     "DatumPrijave": "01/03/2024",
     "DatumOdjave": "05/03/2024",
     "BrojGostiju": 2,
-    "UkupnaCena": 300.00,
+    "UkupnaCena": 300.0,
     "Status": 3,
     "Obrisana": false
   },
@@ -17,7 +17,7 @@
     "DatumPrijave": "15/04/2024",
     "DatumOdjave": "18/04/2024",
     "BrojGostiju": 2,
-    "UkupnaCena": 360.00,
+    "UkupnaCena": 360.0,
     "Status": 3,
     "Obrisana": false
   },
@@ -28,7 +28,7 @@
     "DatumPrijave": "10/05/2024",
     "DatumOdjave": "13/05/2024",
     "BrojGostiju": 1,
-    "UkupnaCena": 135.00,
+    "UkupnaCena": 135.0,
     "Status": 3,
     "Obrisana": false
   },
@@ -39,7 +39,7 @@
     "DatumPrijave": "20/06/2024",
     "DatumOdjave": "23/06/2024",
     "BrojGostiju": 3,
-    "UkupnaCena": 54.00,
+    "UkupnaCena": 54.0,
     "Status": 3,
     "Obrisana": false
   },
@@ -50,7 +50,7 @@
     "DatumPrijave": "05/07/2024",
     "DatumOdjave": "10/07/2024",
     "BrojGostiju": 4,
-    "UkupnaCena": 475.00,
+    "UkupnaCena": 475.0,
     "Status": 3,
     "Obrisana": false
   },
@@ -61,8 +61,74 @@
     "DatumPrijave": "25/07/2026",
     "DatumOdjave": "28/07/2026",
     "BrojGostiju": 2,
-    "UkupnaCena": 225.00,
+    "UkupnaCena": 225.0,
     "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-007",
+    "SmestajniObjekatId": "obj-001",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "15/07/2026",
+    "DatumOdjave": "19/07/2026",
+    "BrojGostiju": 2,
+    "UkupnaCena": 300.0,
+    "Status": 2,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-008",
+    "SmestajniObjekatId": "obj-002",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "01/08/2026",
+    "DatumOdjave": "05/08/2026",
+    "BrojGostiju": 1,
+    "UkupnaCena": 180.0,
+    "Status": 2,
+    "Obrisana": false
+  },
+  {
+    "Id": "rez-009",
+    "SmestajniObjekatId": "obj-004",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "10/09/2026",
+    "DatumOdjave": "14/09/2026",
+    "BrojGostiju": 3,
+    "UkupnaCena": 380.0,
+    "Status": 0,
+    "Obrisana": false
+  },
+  {
+    "Id": "01df383f-70b2-49ce-a8ae-5542b9cdb569",
+    "SmestajniObjekatId": "obj-001",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "02/09/2026",
+    "DatumOdjave": "08/09/2026",
+    "BrojGostiju": 3,
+    "UkupnaCena": 450.0,
+    "Status": 0,
+    "Obrisana": false
+  },
+  {
+    "Id": "d491d335-2051-4021-a6eb-e0799a38bc34",
+    "SmestajniObjekatId": "obj-002",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "02/09/2026",
+    "DatumOdjave": "08/09/2026",
+    "BrojGostiju": 1,
+    "UkupnaCena": 270.0,
+    "Status": 0,
+    "Obrisana": false
+  },
+  {
+    "Id": "a0b2d8f0-6116-4880-920a-c794a40e4125",
+    "SmestajniObjekatId": "obj-001",
+    "Gost": "tamara.vukovic",
+    "DatumPrijave": "02/09/2026",
+    "DatumOdjave": "08/09/2026",
+    "BrojGostiju": 1,
+    "UkupnaCena": 450.0,
+    "Status": 0,
     "Obrisana": false
   }
 ]

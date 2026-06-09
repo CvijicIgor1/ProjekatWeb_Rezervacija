@@ -1,0 +1,294 @@
+@model List<ProjekatWeb.Models.Rezervacija>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Reservations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+            transition: all 0.3s;
+        }
+
+            .filter-btn:hover, .filter-btn.active {
+                background: #e94560;
+                border-color: #e94560;
+                color: white;
+            }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .card-naziv {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-kreirana {
+            background: rgba(255,200,0,0.2);
+            color: #ffc800;
+            border: 1px solid rgba(255,200,0,0.4);
+        }
+
+        .badge-odobrena {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+            border: 1px solid rgba(46,213,115,0.4);
+        }
+
+        .badge-otkazana {
+            background: rgba(233,69,96,0.2);
+            color: #ff6b8a;
+            border: 1px solid rgba(233,69,96,0.4);
+        }
+
+        .badge-zavrsena {
+            background: rgba(116,185,255,0.2);
+            color: #74b9ff;
+            border: 1px solid rgba(116,185,255,0.4);
+        }
+
+        .card-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .info-item label {
+            display: block;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .info-item span {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .cena {
+            color: #e94560;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-otkazi {
+            padding: 9px 20px;
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .btn-otkazi:hover {
+                background: rgba(233,69,96,0.4);
+            }
+
+        .btn-recenzija {
+            padding: 9px 20px;
+            background: rgba(116,185,255,0.2);
+            border: 1px solid rgba(116,185,255,0.4);
+            color: #74b9ff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .btn-recenzija:hover {
+                background: rgba(116,185,255,0.3);
+            }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Home/Index">&#127968; StayFinder</a>
+        <div class="nav-links">
+            <a href="/Gost/Profil">My Profile</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>My <span>Reservations</span></h2>
+
+        @if (TempData["Greska"] != null)
+        {
+            <div class="greska">@TempData["Greska"]</div>
+        }
+
+        <div class="filter-bar">
+            <a href="/Gost/Rezervacije" class="filter-btn @(ViewBag.status == null ? "active" : "")">All</a>
+            <a href="/Gost/Rezervacije?status=Kreirana" class="filter-btn @(ViewBag.status == "Kreirana" ? "active" : "")">Created</a>
+            <a href="/Gost/Rezervacije?status=Odobrena" class="filter-btn @(ViewBag.status == "Odobrena" ? "active" : "")">Approved</a>
+            <a href="/Gost/Rezervacije?status=Otkazana" class="filter-btn @(ViewBag.status == "Otkazana" ? "active" : "")">Cancelled</a>
+            <a href="/Gost/Rezervacije?status=Zavrsena" class="filter-btn @(ViewBag.status == "Zavrsena" ? "active" : "")">Completed</a>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="empty"><p>No reservations found.</p></div>
+        }
+        else
+        {
+            foreach (var r in Model)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-naziv">Reservation #@r.Id</div>
+                        <span class="badge badge-@r.Status.ToString().ToLower()">@r.Status</span>
+                    </div>
+                    <div class="card-info">
+                        <div class="info-item">
+                            <label>Check-in</label>
+                            <span>@r.DatumPrijave</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Check-out</label>
+                            <span>@r.DatumOdjave</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Guests</label>
+                            <span>@r.BrojGostiju</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Total Price</label>
+                            <span class="cena">$@r.UkupnaCena</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        @if (r.Status == StatusRezervacije.Kreirana || r.Status == StatusRezervacije.Odobrena)
+                        {
+                            <form method="post" action="/Gost/OtkaziRezervaciju">
+                                <input type="hidden" name="id" value="@r.Id" />
+                                <button type="submit" class="btn-otkazi">Cancel</button>
+                            </form>
+                        }
+                        @if (r.Status == StatusRezervacije.Zavrsena)
+                        {
+                            <a href="/Gost/DodajRecenziju?objekatId=@r.SmestajniObjekatId" class="btn-recenzija">Leave Review</a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

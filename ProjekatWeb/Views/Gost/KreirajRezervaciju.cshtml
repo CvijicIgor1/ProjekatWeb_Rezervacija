@@ -1,0 +1,293 @@
+@model ProjekatWeb.Models.Smestajni_objekat
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reserve</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .subtitle {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .objekat-info {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .objekat-tip {
+            font-size: 11px;
+            color: #e94560;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .objekat-naziv {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 4px 0;
+        }
+
+        .objekat-grad {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        .objekat-cena {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e94560;
+            text-align: right;
+        }
+
+            .objekat-cena span {
+                font-size: 13px;
+                color: rgba(255,255,255,0.4);
+                font-weight: 400;
+            }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+            .input-group label {
+                display: block;
+                color: rgba(255,255,255,0.6);
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 15px;
+                outline: none;
+            }
+
+                .input-group input:focus {
+                    border-color: #e94560;
+                }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+            .row .input-group {
+                flex: 1;
+            }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .total-box {
+            background: rgba(233,69,96,0.1);
+            border: 1px solid rgba(233,69,96,0.3);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .total-box span {
+                color: rgba(255,255,255,0.6);
+            }
+
+            .total-box strong {
+                font-size: 22px;
+                color: #e94560;
+            }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+            button:hover {
+                opacity: 0.9;
+            }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .btn-back:hover {
+                color: white;
+            }
+    </style>
+    <script>
+        function izracunajCenu() {
+            var checkIn = document.getElementById('checkIn').value;
+            var checkOut = document.getElementById('checkOut').value;
+            var cena = @Model.Cena_po_noci;
+
+            if (checkIn && checkOut) {
+                var d1 = new Date(checkIn.split('/').reverse().join('-'));
+                var d2 = new Date(checkOut.split('/').reverse().join('-'));
+                var noci = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+                if (noci > 0) {
+                    document.getElementById('totalBox').style.display = 'flex';
+                    document.getElementById('totalCena').innerText = '$' + (noci * cena).toFixed(2);
+                    document.getElementById('totalNoci').innerText = noci + ' night(s) x $' + cena;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Home/Index">&#127968; StayFinder</a>
+        <div class="nav-links">
+            <a href="/Gost/Rezervacije">My Reservations</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="/Home/Index" class="btn-back">&#8592; Back to listings</a>
+        <h2>Reserve <span>@Model.Naziv</span></h2>
+        <p class="subtitle">Fill in your stay details below</p>
+
+        <div class="objekat-info">
+            <div>
+                <div class="objekat-tip">@Model.Tip</div>
+                <div class="objekat-naziv">@Model.Naziv</div>
+                <div class="objekat-grad">@Model.Grad</div>
+            </div>
+            <div class="objekat-cena">
+                $@Model.Cena_po_noci <span>/ night</span>
+                <div style="font-size:13px; color:rgba(255,255,255,0.4); font-weight:400;">max @Model.Maksimalan_broj_gostiju guests</div>
+            </div>
+        </div>
+
+        @if (ViewBag.Greska != null)
+        {
+            <div class="greska">@ViewBag.Greska</div>
+        }
+
+        <div class="card">
+            <form method="post" action="/Gost/KreirajRezervaciju">
+                <input type="hidden" name="objekatId" value="@Model.Id" />
+                <div class="row">
+                    <div class="input-group">
+                        <label>Check-in (dd/MM/yyyy)</label>
+                        <input type="text" id="checkIn" name="datumPrijave" placeholder="01/07/2025" required onchange="izracunajCenu()" />
+                    </div>
+                    <div class="input-group">
+                        <label>Check-out (dd/MM/yyyy)</label>
+                        <input type="text" id="checkOut" name="datumOdjave" placeholder="05/07/2025" required onchange="izracunajCenu()" />
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Number of Guests (max @Model.Maksimalan_broj_gostiju)</label>
+                    <input type="number" name="brojGostiju" min="1" max="@Model.Maksimalan_broj_gostiju" required />
+                </div>
+                <div class="total-box" id="totalBox" style="display:none;">
+                    <span id="totalNoci"></span>
+                    <strong id="totalCena"></strong>
+                </div>
+                <button type="submit">Confirm Reservation</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
