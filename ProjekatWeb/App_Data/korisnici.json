@@ -29,16 +29,17 @@
     "KorisnickoIme": "petar.kovac",
     "Lozinka": "petar123",
     "Ime": "Petar",
-    "Prezime": "Kovacevic",
-    "Email": "petar.kovacevic@gmail.com",
+    "Prezime": "Kovac",
+    "Email": "petar.kovac@gmail.com",
     "DatumRodjenja": "17/05/1979",
-    "Pol": "Male",
+    "Pol": "MuÅ¡ki",
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
     "ObjektiIds": [
       "obj-001",
-      "obj-002"
+      "obj-002",
+      "85d1b2c8-585a-4447-a545-403f866a325e"
     ]
   },
   {
@@ -163,10 +164,10 @@
   {
     "KorisnickoIme": "tamara.vukovic",
     "Lozinka": "tamara123",
-    "Ime": "Tamara",
+    "Ime": "Tamra-Ivana",
     "Prezime": "Vukovic",
     "Email": "tamara.vukovic@gmail.com",
-    "DatumRodjenja": "19/04/1988",
+    "DatumRodjenja": "19/04/1999",
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,

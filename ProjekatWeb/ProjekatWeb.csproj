@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DomacinController.cs" />
     <Compile Include="Controllers\GostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
@@ -126,6 +127,10 @@
     <Content Include="Views\Gost\Rezervacije.cshtml" />
     <Content Include="Views\Gost\KreirajRezervaciju.cshtml" />
     <Content Include="Views\Gost\DodajRecenziju.cshtml" />
+    <Content Include="Views\Domacin\Index.cshtml" />
+    <Content Include="Views\Domacin\DodajObjekat.cshtml" />
+    <Content Include="Views\Domacin\IzmeniObjekat.cshtml" />
+    <Content Include="Views\Domacin\Profil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -133,7 +138,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

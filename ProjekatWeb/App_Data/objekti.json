@@ -6,14 +6,17 @@
     "Opis": "Lep i prostran apartman u centru Beograda, idealan za porodice i parove. Potpuno opremljena kuhinja, besplatan WiFi i parking.",
     "Adresa": "Knez Mihailova 15",
     "Grad": "Beograd",
-    "Cena_po_noci": 75.00,
+    "Cena_po_noci": 75.0,
     "Maksimalan_broj_gostiju": 4,
-    "Slika": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600",
+    "Slika": "/Images/1.jpg",
     "Datum_postavljanja_oglasa": "10/01/2024",
     "Dostupnost": true,
     "Obrisan": false,
     "DomacinKorisnickoIme": "petar.kovac",
-    "RecenzijaIds": [ "rec-001", "rec-002" ]
+    "RecenzijaIds": [
+      "rec-001",
+      "rec-002"
+    ]
   },
   {
     "Id": "obj-002",
@@ -22,14 +25,16 @@
     "Opis": "Moderan studio apartman blizu Trga Republike. Klimatizacija, SmartTV i brzi internet.",
     "Adresa": "Makedonska 8",
     "Grad": "Beograd",
-    "Cena_po_noci": 45.00,
+    "Cena_po_noci": 55.0,
     "Maksimalan_broj_gostiju": 2,
-    "Slika": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600",
+    "Slika": "/Images/3.jpg",
     "Datum_postavljanja_oglasa": "15/02/2024",
     "Dostupnost": true,
     "Obrisan": false,
     "DomacinKorisnickoIme": "petar.kovac",
-    "RecenzijaIds": [ "rec-003" ]
+    "RecenzijaIds": [
+      "rec-003"
+    ]
   },
   {
     "Id": "obj-003",
@@ -38,14 +43,16 @@
     "Opis": "Udoban hotel sa pogledom na Zlatibor. U cenu je uključen doručak, besplatan parking i wellness centar.",
     "Adresa": "Partizanske vode bb",
     "Grad": "Zlatibor",
-    "Cena_po_noci": 120.00,
+    "Cena_po_noci": 120.0,
     "Maksimalan_broj_gostiju": 3,
-    "Slika": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600",
+    "Slika": "/Images/6.jpg",
     "Datum_postavljanja_oglasa": "05/03/2024",
     "Dostupnost": true,
     "Obrisan": false,
     "DomacinKorisnickoIme": "ivana.lukic",
-    "RecenzijaIds": [ "rec-004" ]
+    "RecenzijaIds": [
+      "rec-004"
+    ]
   },
   {
     "Id": "obj-004",
@@ -54,9 +61,9 @@
     "Opis": "Rustična vikendica u srcu prirode na Tari. Kamin, terasa sa roštiljem, idealno za odmor od gradske vreve.",
     "Adresa": "Kaluđerske bare 7",
     "Grad": "Tara",
-    "Cena_po_noci": 95.00,
+    "Cena_po_noci": 95.0,
     "Maksimalan_broj_gostiju": 6,
-    "Slika": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=600",
+    "Slika": "/Images/4.jpg",
     "Datum_postavljanja_oglasa": "20/03/2024",
     "Dostupnost": true,
     "Obrisan": false,
@@ -70,13 +77,31 @@
     "Opis": "Povoljni hostel u samom centru Novog Sada, tik uz Dunavski park. Zajednička kuhinja, lounge i organizovane ture.",
     "Adresa": "Dunavska 22",
     "Grad": "Novi Sad",
-    "Cena_po_noci": 18.00,
+    "Cena_po_noci": 18.0,
     "Maksimalan_broj_gostiju": 8,
-    "Slika": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600",
+    "Slika": "/Images/2.jpg",
     "Datum_postavljanja_oglasa": "01/04/2024",
     "Dostupnost": true,
     "Obrisan": false,
     "DomacinKorisnickoIme": "zoran.milic",
-    "RecenzijaIds": [ "rec-005" ]
+    "RecenzijaIds": [
+      "rec-005"
+    ]
+  },
+  {
+    "Id": "85d1b2c8-585a-4447-a545-403f866a325e",
+    "Naziv": "Apartman la vida",
+    "Tip": "Apartman",
+    "Opis": "Apartman je u planinama",
+    "Adresa": "Anastasije Curcic 23a",
+    "Grad": "Sar Planina",
+    "Cena_po_noci": 200.0,
+    "Maksimalan_broj_gostiju": 4,
+    "Slika": "/Images/12405247-4a5e-4cb0-9277-1320ff468526.jpg",
+    "Datum_postavljanja_oglasa": "10.06.2026",
+    "Dostupnost": true,
+    "Obrisan": false,
+    "DomacinKorisnickoIme": "petar.kovac",
+    "RecenzijaIds": []
   }
 ]

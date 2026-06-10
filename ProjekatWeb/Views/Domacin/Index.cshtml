@@ -1,0 +1,428 @@
+@model List<ProjekatWeb.Models.Smestajni_objekat>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .btn-dodaj {
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+            .btn-dodaj:hover {
+                opacity: 0.9;
+                color: white;
+            }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+            transition: all 0.3s;
+        }
+
+            .filter-btn:hover, .filter-btn.active {
+                background: #e94560;
+                border-color: #e94560;
+                color: white;
+            }
+
+        .sort-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .sort-group span {
+                color: rgba(255,255,255,0.5);
+                font-size: 13px;
+            }
+
+            .sort-group select {
+                padding: 8px 14px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 13px;
+                outline: none;
+                cursor: pointer;
+            }
+
+                .sort-group select option {
+                    background: #16213e;
+                }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+            .card:hover {
+                transform: translateY(-4px);
+            }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: rgba(255,255,255,0.15);
+        }
+
+            .card-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .card-body {
+            padding: 18px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .card-tip {
+            font-size: 11px;
+            color: #e94560;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-dostupan {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+            border: 1px solid rgba(46,213,115,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-nedostupan {
+            background: rgba(233,69,96,0.2);
+            color: #ff6b8a;
+            border: 1px solid rgba(233,69,96,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-naziv {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .card-grad {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .card-cena {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+            .card-cena span {
+                font-size: 12px;
+                color: rgba(255,255,255,0.4);
+                font-weight: 400;
+            }
+
+        .card-gosti {
+            color: rgba(255,255,255,0.4);
+            font-size: 12px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .btn-izmeni {
+            flex: 1;
+            padding: 9px;
+            background: rgba(116,185,255,0.15);
+            border: 1px solid rgba(116,185,255,0.4);
+            color: #74b9ff;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .btn-izmeni:hover {
+                background: rgba(116,185,255,0.3);
+                color: #74b9ff;
+            }
+
+        .btn-obrisi {
+            flex: 1;
+            padding: 9px;
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.4);
+            color: #ff6b8a;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .btn-obrisi:hover {
+                background: rgba(233,69,96,0.3);
+            }
+
+        .empty {
+            text-align: center;
+            padding: 80px;
+            color: rgba(255,255,255,0.3);
+        }
+
+            .empty p {
+                margin-top: 10px;
+                font-size: 15px;
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Home/Index">&#127968; StayFinder</a>
+        <div class="nav-links">
+            <a href="/Domacin/Profil">My Profile</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="page-header">
+            <h2>My <span>Properties</span></h2>
+            <a href="/Domacin/DodajObjekat" class="btn-dodaj">+ Add Property</a>
+        </div>
+
+        @if (TempData["Greska"] != null)
+        {
+            <div class="greska">@TempData["Greska"]</div>
+        }
+
+        <div class="filter-bar">
+            <div class="filter-group">
+                <a href="/Domacin/Index" class="filter-btn @(ViewBag.dostupnost == null ? "active" : "")">All</a>
+                <a href="/Domacin/Index?dostupnost=dostupni" class="filter-btn @(ViewBag.dostupnost == "dostupni" ? "active" : "")">Available</a>
+                <a href="/Domacin/Index?dostupnost=nedostupni" class="filter-btn @(ViewBag.dostupnost == "nedostupni" ? "active" : "")">Unavailable</a>
+            </div>
+            <div class="sort-group">
+                <span>Sort:</span>
+                <form method="get" action="/Domacin/Index" id="sortForm">
+                    <input type="hidden" name="dostupnost" value="@ViewBag.dostupnost" />
+                    <select name="sortBy" onchange="document.getElementById('sortForm').submit()">
+                        <option value="">Default</option>
+                        <option value="naziv_asc" @(ViewBag.sortBy == "naziv_asc" ? "selected" : "")>Name A-Z</option>
+                        <option value="naziv_desc" @(ViewBag.sortBy == "naziv_desc" ? "selected" : "")>Name Z-A</option>
+                        <option value="cena_asc" @(ViewBag.sortBy == "cena_asc" ? "selected" : "")>Price Low-High</option>
+                        <option value="cena_desc" @(ViewBag.sortBy == "cena_desc" ? "selected" : "")>Price High-Low</option>
+                        <option value="datum_asc" @(ViewBag.sortBy == "datum_asc" ? "selected" : "")>Oldest First</option>
+                        <option value="datum_desc" @(ViewBag.sortBy == "datum_desc" ? "selected" : "")>Newest First</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="empty">
+                <p>No properties found. <a href="/Domacin/DodajObjekat" style="color:#e94560;">Add your first property!</a></p>
+            </div>
+        }
+        else
+        {
+            <div class="grid">
+                @foreach (var o in Model)
+                {
+                    <div class="card">
+                        <div class="card-img">
+                            @if (!string.IsNullOrEmpty(o.Slika))
+                            {
+                                <img src="@o.Slika" alt="@o.Naziv" />
+                            }
+                            else
+                            {
+                                <span>&#127968;</span>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="card-top">
+                                <div class="card-tip">@o.Tip</div>
+                                @if (o.Dostupnost)
+                                {
+                                    <span class="badge-dostupan">Available</span>
+                                }
+                                else
+                                {
+                                    <span class="badge-nedostupan">Unavailable</span>
+                                }
+                            </div>
+                            <div class="card-naziv">@o.Naziv</div>
+                            <div class="card-grad">&#128205; @o.Grad</div>
+                            <div class="card-footer">
+                                <div class="card-cena">$@o.Cena_po_noci <span>/ night</span></div>
+                                <div class="card-gosti">max @o.Maksimalan_broj_gostiju guests</div>
+                            </div>
+                            <div class="card-actions">
+                                @if (o.Dostupnost)
+                                {
+                                    <a href="/Domacin/IzmeniObjekat?id=@o.Id" class="btn-izmeni">Edit</a>
+                                    <form method="post" action="/Domacin/ObrisiObjekat" style="flex:1;">
+                                        <input type="hidden" name="id" value="@o.Id" />
+                                        <button type="submit" class="btn-obrisi" style="width:100%;">Delete</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <span style="color:rgba(255,255,255,0.3); font-size:13px;">Cannot edit unavailable property</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
