@@ -62,7 +62,7 @@
     "DatumOdjave": "28/07/2026",
     "BrojGostiju": 2,
     "UkupnaCena": 225.0,
-    "Status": 1,
+    "Status": 2,
     "Obrisana": false
   },
   {
@@ -95,7 +95,7 @@
     "DatumOdjave": "14/09/2026",
     "BrojGostiju": 3,
     "UkupnaCena": 380.0,
-    "Status": 0,
+    "Status": 2,
     "Obrisana": false
   },
   {
@@ -106,7 +106,7 @@
     "DatumOdjave": "08/09/2026",
     "BrojGostiju": 3,
     "UkupnaCena": 450.0,
-    "Status": 0,
+    "Status": 2,
     "Obrisana": false
   },
   {
@@ -117,7 +117,7 @@
     "DatumOdjave": "08/09/2026",
     "BrojGostiju": 1,
     "UkupnaCena": 270.0,
-    "Status": 0,
+    "Status": 2,
     "Obrisana": false
   },
   {

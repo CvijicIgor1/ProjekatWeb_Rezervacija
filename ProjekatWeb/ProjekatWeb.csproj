@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DomacinController.cs" />
     <Compile Include="Controllers\GostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -131,6 +132,14 @@
     <Content Include="Views\Domacin\DodajObjekat.cshtml" />
     <Content Include="Views\Domacin\IzmeniObjekat.cshtml" />
     <Content Include="Views\Domacin\Profil.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Korisnici.cshtml" />
+    <Content Include="Views\Admin\Rezervacije.cshtml" />
+    <Content Include="Views\Admin\Recenzije.cshtml" />
+    <Content Include="Views\Admin\Objekti.cshtml" />
+    <Content Include="Views\Admin\DodajDomacina.cshtml" />
+    <Content Include="Views\Admin\IzmeniKorisnika.cshtml" />
+    <Content Include="Views\Admin\IzmeniObjekat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

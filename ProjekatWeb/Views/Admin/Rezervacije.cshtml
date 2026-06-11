@@ -1,0 +1,240 @@
+@model List<ProjekatWeb.Models.Rezervacija>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reservations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 14px;
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-kreirana {
+            background: rgba(255,200,0,0.2);
+            color: #ffc800;
+            border: 1px solid rgba(255,200,0,0.4);
+        }
+
+        .badge-odobrena {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+            border: 1px solid rgba(46,213,115,0.4);
+        }
+
+        .badge-otkazana {
+            background: rgba(233,69,96,0.2);
+            color: #ff6b8a;
+            border: 1px solid rgba(233,69,96,0.4);
+        }
+
+        .badge-zavrsena {
+            background: rgba(116,185,255,0.2);
+            color: #74b9ff;
+            border: 1px solid rgba(116,185,255,0.4);
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-odobri {
+            padding: 6px 12px;
+            background: rgba(46,213,115,0.15);
+            border: 1px solid rgba(46,213,115,0.4);
+            color: #2ed573;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-otkazi {
+            padding: 6px 12px;
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.4);
+            color: #ff6b8a;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .cena {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Admin/Index">&#9881; Admin Panel</a>
+        <div class="nav-links">
+            <a href="/Admin/Index">Dashboard</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Manage <span>Reservations</span></h2>
+        @if (TempData["Greska"] != null)
+        {<div class="greska">@TempData["Greska"]</div>}
+        @if (Model.Count == 0)
+        {
+            <div class="empty"><p>No reservations found.</p></div>
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Guest</th>
+                    <th>Property</th>
+                    <th>Check-in</th>
+                    <th>Check-out</th>
+                    <th>Guests</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.Id.Substring(0, Math.Min(8, r.Id.Length))</td>
+                        <td>@r.Gost</td>
+                        <td>@r.SmestajniObjekatId</td>
+                        <td>@r.DatumPrijave</td>
+                        <td>@r.DatumOdjave</td>
+                        <td>@r.BrojGostiju</td>
+                        <td class="cena">$@r.UkupnaCena</td>
+                        <td><span class="badge badge-@r.Status.ToString().ToLower()">@r.Status</span></td>
+                        <td>
+                            <div class="actions">
+                                @if (r.Status == StatusRezervacije.Kreirana)
+                                {
+                                    <form method="post" action="/Admin/OdobriRezervaciju">
+                                        <input type="hidden" name="id" value="@r.Id" />
+                                        <button type="submit" class="btn-odobri">Approve</button>
+                                    </form>
+                                }
+                                @if (r.Status == StatusRezervacije.Kreirana || r.Status == StatusRezervacije.Odobrena)
+                                {
+                                    <form method="post" action="/Admin/OtkaziRezervaciju">
+                                        <input type="hidden" name="id" value="@r.Id" />
+                                        <button type="submit" class="btn-otkazi">Cancel</button>
+                                    </form>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</body>
+</html>

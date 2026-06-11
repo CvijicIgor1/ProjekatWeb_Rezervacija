@@ -1,0 +1,213 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Add Host</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+            .input-group label {
+                display: block;
+                color: rgba(255,255,255,0.6);
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .input-group input, .input-group select {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 15px;
+                outline: none;
+            }
+
+                .input-group input:focus {
+                    border-color: #e94560;
+                }
+
+                .input-group select option {
+                    background: #16213e;
+                }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+            .row .input-group {
+                flex: 1;
+            }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+            button:hover {
+                opacity: 0.9;
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Admin/Index">&#9881; Admin Panel</a>
+        <div class="nav-links">
+            <a href="/Admin/Index">Dashboard</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="/Admin/Korisnici" class="btn-back">&#8592; Back to Users</a>
+        <h2>Add <span>Host</span></h2>
+
+        @if (ViewBag.Greska != null)
+        {
+            <div class="greska">@ViewBag.Greska</div>
+        }
+
+        <div class="card">
+            <form method="post" action="/Admin/DodajDomacina">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" name="korisnickoIme" placeholder="Choose a username" required />
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" name="lozinka" placeholder="Choose a password" required />
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" name="ime" placeholder="First name" required />
+                    </div>
+                    <div class="input-group">
+                        <label>Last Name</label>
+                        <input type="text" name="prezime" placeholder="Last name" required />
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="email@example.com" required />
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Date of Birth (dd/MM/yyyy)</label>
+                        <input type="text" name="datumRodjenja" placeholder="15/03/1990" required />
+                    </div>
+                    <div class="input-group">
+                        <label>Gender</label>
+                        <select name="pol">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Add Host</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

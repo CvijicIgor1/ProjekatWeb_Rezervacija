@@ -1,0 +1,224 @@
+@model List<ProjekatWeb.Models.Recenzija>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reviews</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-naslov {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-kreirana {
+            background: rgba(255,200,0,0.2);
+            color: #ffc800;
+            border: 1px solid rgba(255,200,0,0.4);
+        }
+
+        .badge-odobrena {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+            border: 1px solid rgba(46,213,115,0.4);
+        }
+
+        .badge-odbijena {
+            background: rgba(233,69,96,0.2);
+            color: #ff6b8a;
+            border: 1px solid rgba(233,69,96,0.4);
+        }
+
+        .card-meta {
+            color: rgba(255,255,255,0.4);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .card-sadrzaj {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .stars {
+            color: #ffc800;
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-odobri {
+            padding: 8px 20px;
+            background: rgba(46,213,115,0.15);
+            border: 1px solid rgba(46,213,115,0.4);
+            color: #2ed573;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .btn-odobri:hover {
+                background: rgba(46,213,115,0.3);
+            }
+
+        .btn-odbij {
+            padding: 8px 20px;
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.4);
+            color: #ff6b8a;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .btn-odbij:hover {
+                background: rgba(233,69,96,0.3);
+            }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Admin/Index">&#9881; Admin Panel</a>
+        <div class="nav-links">
+            <a href="/Admin/Index">Dashboard</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Manage <span>Reviews</span></h2>
+        @if (Model.Count == 0)
+        {
+            <div class="empty"><p>No reviews found.</p></div>
+        }
+        else
+        {
+            foreach (var r in Model)
+            {
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-naslov">@r.Naslov</div>
+                        <span class="badge badge-@r.Status.ToString().ToLower()">@r.Status</span>
+                    </div>
+                    <div class="card-meta">By @r.RecenzentKorisnickoIme | Property: @r.SmestajniObjekatId</div>
+                    <div class="card-meta">Rating: @r.Ocena / 5</div>
+                    <div class="card-sadrzaj">@r.Sadrzaj</div>
+                    @if (r.Status == StatusRecenzije.Kreirana)
+                    {
+                        <div class="actions">
+                            <form method="post" action="/Admin/OdobriRecenziju">
+                                <input type="hidden" name="id" value="@r.Id" />
+                                <button type="submit" class="btn-odobri">Approve</button>
+                            </form>
+                            <form method="post" action="/Admin/OdbijRecenziju">
+                                <input type="hidden" name="id" value="@r.Id" />
+                                <button type="submit" class="btn-odbij">Reject</button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

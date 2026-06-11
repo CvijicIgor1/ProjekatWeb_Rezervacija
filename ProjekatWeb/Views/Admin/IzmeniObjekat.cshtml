@@ -1,0 +1,230 @@
+@model ProjekatWeb.Models.Smestajni_objekat
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Edit Property</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+            .input-group label {
+                display: block;
+                color: rgba(255,255,255,0.6);
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+
+            .input-group input, .input-group select, .input-group textarea {
+                width: 100%;
+                padding: 12px 16px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 15px;
+                outline: none;
+                font-family: inherit;
+            }
+
+                .input-group input:focus, .input-group textarea:focus {
+                    border-color: #e94560;
+                }
+
+                .input-group select option {
+                    background: #16213e;
+                }
+
+            .input-group textarea {
+                resize: vertical;
+                min-height: 80px;
+            }
+
+        .row {
+            display: flex;
+            gap: 14px;
+        }
+
+            .row .input-group {
+                flex: 1;
+            }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+            .checkbox-group input {
+                width: auto;
+            }
+
+            .checkbox-group label {
+                color: rgba(255,255,255,0.7);
+                font-size: 15px;
+                cursor: pointer;
+            }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #e94560, #c62a47);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+            button:hover {
+                opacity: 0.9;
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Admin/Index">&#9881; Admin Panel</a>
+        <div class="nav-links">
+            <a href="/Admin/Index">Dashboard</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <a href="/Admin/Objekti" class="btn-back">&#8592; Back to Properties</a>
+        <h2>Edit <span>@Model.Naziv</span></h2>
+
+        <div class="card">
+            <form method="post" action="/Admin/IzmeniObjekat">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" name="naziv" value="@Model.Naziv" required />
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Type</label>
+                        <select name="tip">
+                            <option value="Hotel" @(Model.Tip == "Hotel" ? "selected" : "")>Hotel</option>
+                            <option value="Apartman" @(Model.Tip == "Apartman" ? "selected" : "")>Apartment</option>
+                            <option value="Hostel" @(Model.Tip == "Hostel" ? "selected" : "")>Hostel</option>
+                            <option value="Vila" @(Model.Tip == "Vila" ? "selected" : "")>Villa</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>City</label>
+                        <input type="text" name="grad" value="@Model.Grad" required />
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Address</label>
+                    <input type="text" name="adresa" value="@Model.Adresa" required />
+                </div>
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea name="opis">@Model.Opis</textarea>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <label>Price per night ($)</label>
+                        <input type="number" name="cena" value="@Model.Cena_po_noci" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label>Max Guests</label>
+                        <input type="number" name="maxGostiju" value="@Model.Maksimalan_broj_gostiju" required />
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" name="dostupnost" id="dostupnost" value="true" @(Model.Dostupnost ? "checked" : "") />
+                    <label for="dostupnost">Available (visible to guests)</label>
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

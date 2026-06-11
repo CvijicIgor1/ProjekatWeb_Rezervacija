@@ -100,7 +100,7 @@
     "Slika": "/Images/12405247-4a5e-4cb0-9277-1320ff468526.jpg",
     "Datum_postavljanja_oglasa": "10.06.2026",
     "Dostupnost": true,
-    "Obrisan": false,
+    "Obrisan": true,
     "DomacinKorisnickoIme": "petar.kovac",
     "RecenzijaIds": []
   }

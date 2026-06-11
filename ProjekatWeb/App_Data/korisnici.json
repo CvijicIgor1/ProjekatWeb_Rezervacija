@@ -170,7 +170,7 @@
     "DatumRodjenja": "19/04/1999",
     "Pol": "Female",
     "TipKorisnika": 0,
-    "Obrisan": false,
+    "Obrisan": true,
     "RezervacijaIds": [
       "b4d7a02b-63ed-4748-a949-31c4c60cb6f9",
       "7b1758e8-af2c-4bf6-b867-c04079de3918",
@@ -179,6 +179,19 @@
       "d491d335-2051-4021-a6eb-e0799a38bc34",
       "a0b2d8f0-6116-4880-920a-c794a40e4125"
     ],
+    "ObjektiIds": []
+  },
+  {
+    "KorisnickoIme": "petar.perovic",
+    "Lozinka": "pera1234",
+    "Ime": "Petar",
+    "Prezime": "Perovic",
+    "Email": "perovic.petar123@gmail.com",
+    "DatumRodjenja": "15/03/2000",
+    "Pol": "Male",
+    "TipKorisnika": 1,
+    "Obrisan": true,
+    "RezervacijaIds": [],
     "ObjektiIds": []
   }
 ]

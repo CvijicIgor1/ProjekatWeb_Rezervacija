@@ -1,0 +1,297 @@
+@model List<ProjekatWeb.Models.Smestajni_objekat>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+            .nav-links a:hover {
+                color: #e94560;
+            }
+
+        .btn-red {
+            background: #e94560;
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+            h2 span {
+                color: #e94560;
+            }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+
+            .filter-btn.active, .filter-btn:hover {
+                background: #e94560;
+                border-color: #e94560;
+                color: white;
+            }
+
+        .sort-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+            .sort-group span {
+                color: rgba(255,255,255,0.5);
+                font-size: 13px;
+            }
+
+            .sort-group select {
+                padding: 8px 14px;
+                background: rgba(255,255,255,0.08);
+                border: 1px solid rgba(255,255,255,0.15);
+                border-radius: 8px;
+                color: white;
+                font-size: 13px;
+                outline: none;
+            }
+
+                .sort-group select option {
+                    background: #16213e;
+                }
+
+        .greska {
+            background: rgba(233,69,96,0.2);
+            border: 1px solid rgba(233,69,96,0.5);
+            color: #ff6b8a;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 14px;
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .badge-dostupan {
+            background: rgba(46,213,115,0.2);
+            color: #2ed573;
+            border: 1px solid rgba(46,213,115,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+        }
+
+        .badge-nedostupan {
+            background: rgba(233,69,96,0.2);
+            color: #ff6b8a;
+            border: 1px solid rgba(233,69,96,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+        }
+
+        .cena {
+            color: #e94560;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-edit {
+            padding: 6px 14px;
+            background: rgba(116,185,255,0.15);
+            border: 1px solid rgba(116,185,255,0.4);
+            color: #74b9ff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .btn-del {
+            padding: 6px 14px;
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.4);
+            color: #ff6b8a;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-logo" href="/Admin/Index">&#9881; Admin Panel</a>
+        <div class="nav-links">
+            <a href="/Admin/Index">Dashboard</a>
+            <a href="/Korisnik/Odjava" class="btn-red">Sign Out</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Manage <span>Properties</span></h2>
+        @if (TempData["Greska"] != null)
+        {<div class="greska">@TempData["Greska"]</div>}
+
+        <div class="filter-bar">
+            <div class="filter-group">
+                <a href="/Admin/Objekti" class="filter-btn @(ViewBag.dostupnost == null ? "active" : "")">All</a>
+                <a href="/Admin/Objekti?dostupnost=dostupni" class="filter-btn @(ViewBag.dostupnost == "dostupni" ? "active" : "")">Available</a>
+                <a href="/Admin/Objekti?dostupnost=nedostupni" class="filter-btn @(ViewBag.dostupnost == "nedostupni" ? "active" : "")">Unavailable</a>
+            </div>
+            <div class="sort-group">
+                <span>Sort:</span>
+                <form method="get" action="/Admin/Objekti" id="sortForm">
+                    <input type="hidden" name="dostupnost" value="@ViewBag.dostupnost" />
+                    <select name="sortBy" onchange="document.getElementById('sortForm').submit()">
+                        <option value="">Default</option>
+                        <option value="naziv_asc" @(ViewBag.sortBy == "naziv_asc" ? "selected" : "")>Name A-Z</option>
+                        <option value="naziv_desc" @(ViewBag.sortBy == "naziv_desc" ? "selected" : "")>Name Z-A</option>
+                        <option value="cena_asc" @(ViewBag.sortBy == "cena_asc" ? "selected" : "")>Price Low-High</option>
+                        <option value="cena_desc" @(ViewBag.sortBy == "cena_desc" ? "selected" : "")>Price High-Low</option>
+                        <option value="datum_asc" @(ViewBag.sortBy == "datum_asc" ? "selected" : "")>Oldest First</option>
+                        <option value="datum_desc" @(ViewBag.sortBy == "datum_desc" ? "selected" : "")>Newest First</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="empty"><p>No properties found.</p></div>
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>City</th>
+                    <th>Price/night</th>
+                    <th>Max Guests</th>
+                    <th>Host</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var o in Model)
+                {
+                    <tr>
+                        <td>@o.Naziv</td>
+                        <td>@o.Tip</td>
+                        <td>@o.Grad</td>
+                        <td class="cena">$@o.Cena_po_noci</td>
+                        <td>@o.Maksimalan_broj_gostiju</td>
+                        <td>@o.DomacinKorisnickoIme</td>
+                        <td>
+                            @if (o.Dostupnost)
+                            {<span class="badge-dostupan">Available</span> }
+                            else
+                            { <span class="badge-nedostupan">Unavailable</span>}
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <a href="/Admin/IzmeniObjekat?id=@o.Id" class="btn-edit">Edit</a>
+                                <form method="post" action="/Admin/ObrisiObjekat">
+                                    <input type="hidden" name="id" value="@o.Id" />
+                                    <button type="submit" class="btn-del" onclick="return confirm('Delete?')">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</body>
+</html>
