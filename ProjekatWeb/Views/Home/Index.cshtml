@@ -1,6 +1,8 @@
 @model List<ProjekatWeb.Models.Smestajni_objekat>
 @{
     Layout = null;
+    var prosecneOcene = ViewBag.ProsecneOcene as System.Collections.Generic.Dictionary<string, double>;
+    var brojRecenzija = ViewBag.BrojRecenzija as System.Collections.Generic.Dictionary<string, int>;
 }
 <!DOCTYPE html>
 <html>
@@ -21,7 +23,6 @@
             min-height: 100vh;
         }
 
-       
         nav {
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
@@ -66,7 +67,6 @@
                 color: white;
             }
 
-        
         .hero {
             text-align: center;
             padding: 60px 20px 40px;
@@ -84,33 +84,36 @@
                 }
 
             .hero p {
-                color: rgba(255,255,255,0.6);
-                font-size: 16px;
-                margin-bottom: 35px;
+                color: rgba(255,255,255,0.5);
+                margin-bottom: 30px;
+                font-size: 15px;
+                letter-spacing: 2px;
             }
 
-       
         .search-box {
+            max-width: 800px;
+            margin: 0 auto;
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px;
-            padding: 25px 30px;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 24px;
         }
 
         .search-row {
             display: flex;
             gap: 12px;
-            flex-wrap: wrap;
             margin-bottom: 12px;
+            flex-wrap: wrap;
         }
 
-            .search-row input,
-            .search-row select {
+            .search-row:last-child {
+                margin-bottom: 0;
+            }
+
+            .search-row input, .search-row select {
                 flex: 1;
                 min-width: 140px;
-                padding: 11px 14px;
+                padding: 11px 16px;
                 background: rgba(255,255,255,0.08);
                 border: 1px solid rgba(255,255,255,0.15);
                 border-radius: 8px;
@@ -119,59 +122,38 @@
                 outline: none;
             }
 
-                .search-row input::placeholder {
-                    color: rgba(255,255,255,0.35);
-                }
-
                 .search-row select option {
                     background: #16213e;
                 }
 
-                .search-row input:focus,
-                .search-row select:focus {
-                    border-color: #e94560;
-                }
-
         .btn-search {
-            padding: 11px 30px;
-            background: linear-gradient(135deg, #e94560, #c62a47);
+            padding: 11px 24px;
+            background: #e94560;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            transition: opacity 0.3s;
         }
-
-            .btn-search:hover {
-                opacity: 0.9;
-            }
 
         .btn-reset {
             padding: 11px 20px;
             background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.7);
             border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6);
             border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
             text-decoration: none;
-            transition: background 0.3s;
+            font-size: 14px;
         }
 
-            .btn-reset:hover {
-                background: rgba(255,255,255,0.15);
-            }
-
-        
         .sort-bar {
-            max-width: 1200px;
-            margin: 30px auto 20px;
-            padding: 0 30px;
+            max-width: 1100px;
+            margin: 25px auto 10px;
+            padding: 0 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
             .sort-bar span {
@@ -187,7 +169,6 @@
                 color: white;
                 font-size: 14px;
                 outline: none;
-                cursor: pointer;
             }
 
                 .sort-bar select option {
@@ -197,43 +178,39 @@
         .results-count {
             margin-left: auto;
             color: rgba(255,255,255,0.4);
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        
         .grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 30px 60px;
+            max-width: 1100px;
+            margin: 20px auto 40px;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
         }
 
-        
         .card {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
             .card:hover {
                 transform: translateY(-5px);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                border-color: rgba(233,69,96,0.4);
             }
 
         .card-img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
-            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            overflow: hidden;
+            background: rgba(255,255,255,0.03);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
-            color: rgba(255,255,255,0.2);
         }
 
             .card-img img {
@@ -242,36 +219,60 @@
                 object-fit: cover;
             }
 
+            .card-img span {
+                font-size: 60px;
+            }
+
         .card-body {
             padding: 18px;
         }
 
-        .card-tip {
-            font-size: 11px;
-            color: #e94560;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
         }
 
+        .card-tip {
+            background: rgba(233,69,96,0.2);
+            color: #e94560;
+            border: 1px solid rgba(233,69,96,0.4);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .card-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+
+            .card-rating .count {
+                color: rgba(255,255,255,0.4);
+                font-size: 12px;
+            }
+
         .card-naziv {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 6px;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .card-grad {
             color: rgba(255,255,255,0.5);
             font-size: 13px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .card-opis {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.4);
             font-size: 13px;
             line-height: 1.5;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -282,12 +283,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 14px;
+            margin-bottom: 14px;
         }
 
         .card-cena {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #e94560;
         }
@@ -306,37 +306,33 @@
         .btn-rezervisi {
             display: block;
             text-align: center;
-            margin-top: 14px;
             padding: 10px;
             background: linear-gradient(135deg, #e94560, #c62a47);
             color: white;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
             font-size: 14px;
+            font-weight: 600;
             transition: opacity 0.3s;
         }
 
             .btn-rezervisi:hover {
                 opacity: 0.9;
-                color: white;
             }
 
-       
-        .empty {
-            text-align: center;
-            padding: 80px 20px;
+        .no-rating {
             color: rgba(255,255,255,0.3);
-            grid-column: 1 / -1;
+            font-size: 12px;
         }
 
-            .empty p {
-                font-size: 16px;
-                margin-top: 10px;
-            }
-
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
+        .empty {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 80px;
+            color: rgba(255,255,255,0.3);
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
@@ -347,27 +343,27 @@
     </style>
 </head>
 <body>
-
     <nav>
-        <div class="nav-logo">&#127968; StayFinder</div>
+        <span class="nav-logo">&#127968; StayFinder</span>
         <div class="nav-links">
             @if (Session["korisnik"] != null)
             {
-                <a href="#">Hello, @Session["korisnik"]</a>
-
-                if (Session["tip"].ToString() == "Gost")
+                string tip = Session["tip"] != null ? Session["tip"].ToString() : "";
+                if (tip == "Gost")
                 {
                     <a href="/Gost/Profil">My Profile</a>
+                    <a href="/Gost/Rezervacije">My Reservations</a>
                 }
-                else if (Session["tip"].ToString() == "Domacin")
+                else if (tip == "Domacin")
                 {
-                    <a href="/Domacin/Profil">My Properties</a>
+                    <a href="/Domacin/Profil">My Profile</a>
+                    <a href="/Domacin/Index">My Properties</a>
                 }
-                else if (Session["tip"].ToString() == "Administrator")
+                else if (tip == "Administrator")
                 {
-                    <a href="/Admin/Index">Admin Panel</a>
+                    <a href="/Admin/Profil">My Profile</a>
+                    <a href="/Admin/Index">Dashboard</a>
                 }
-
                 <a href="/Korisnik/Odjava" class="btn-login">Sign Out</a>
             }
             else
@@ -378,11 +374,9 @@
         </div>
     </nav>
 
-    
     <div class="hero">
         <h1>Find Your Perfect <span>Stay</span></h1>
         <p>BOOK YOUR NEXT TRIP HERE AND ENJOY IT</p>
-
         <div class="search-box">
             <form method="get" action="/Home/Index">
                 <div class="search-row">
@@ -390,11 +384,11 @@
                     <input type="text" name="grad" placeholder="City..." value="@ViewBag.grad" />
                     <select name="tip">
                         <option value="">All Types</option>
-                        <option value="Hotel" @(ViewBag.Tip == "Hotel" ? "selected" : "")>Hotel</option>
-                        <option value="House" @(ViewBag.Tip == "House" ? "selected" : "")>House</option>
-                        <option value="Apartment" @(ViewBag.Tip == "Apartment" ? "selected" : "")>Apartment</option>
-                        <option value="Hostel" @(ViewBag.Tip == "Hostel" ? "selected" : "")>Hostel</option>
-                        <option value="Villa" @(ViewBag.Tip == "Villa" ? "selected" : "")>Villa</option>
+                        <option value="Hotel" @(ViewBag.tip == "Hotel" ? "selected" : "")>Hotel</option>
+                        <option value="House" @(ViewBag.tip == "House" ? "selected" : "")>House</option>
+                        <option value="Apartment" @(ViewBag.tip == "Apartment" ? "selected" : "")>Apartment</option>
+                        <option value="Hostel" @(ViewBag.tip == "Hostel" ? "selected" : "")>Hostel</option>
+                        <option value="Villa" @(ViewBag.tip == "Villa" ? "selected" : "")>Villa</option>
                     </select>
                 </div>
                 <div class="search-row">
@@ -407,7 +401,6 @@
         </div>
     </div>
 
-    
     <div class="sort-bar">
         <span>Sort by:</span>
         <form method="get" action="/Home/Index" id="sortForm">
@@ -432,14 +425,20 @@
     <div class="grid">
         @if (Model.Count == 0)
         {
-            <div class="empty">
-                <p>No accommodations found.</p>
-            </div>
+            <div class="empty"><p>No accommodations found.</p></div>
         }
         else
         {
             foreach (var o in Model)
             {
+                double ocena = 0;
+                int broj = 0;
+                if (prosecneOcene != null && prosecneOcene.ContainsKey(o.Id))
+                {
+                    ocena = prosecneOcene[o.Id];
+                    broj = brojRecenzija != null && brojRecenzija.ContainsKey(o.Id) ? brojRecenzija[o.Id] : 0;
+                }
+
                 <div class="card">
                     <div class="card-img">
                         @if (!string.IsNullOrEmpty(o.Slika))
@@ -452,7 +451,20 @@
                         }
                     </div>
                     <div class="card-body">
-                        <div class="card-tip">@o.Tip</div>
+                        <div class="card-top">
+                            <div class="card-tip">@o.Tip</div>
+                            @if (ocena > 0)
+                            {
+                                <div class="card-rating">
+                                    <span>@ocena.ToString("0.0")/5</span>
+                                    <span class="count">(@broj)</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="no-rating">No reviews yet</span>
+                            }
+                        </div>
                         <div class="card-naziv">@o.Naziv</div>
                         <div class="card-grad">&#128205; @o.Grad</div>
                         <div class="card-opis">@o.Opis</div>
@@ -469,6 +481,5 @@
             }
         }
     </div>
-
 </body>
 </html>

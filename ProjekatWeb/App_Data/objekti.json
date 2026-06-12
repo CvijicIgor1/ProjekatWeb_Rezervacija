@@ -88,21 +88,5 @@
     "RecenzijaIds": [
       "rec-005"
     ]
-  },
-  {
-    "Id": "60d2ed4e-831c-4b76-82b1-254c3835f260",
-    "Naziv": "Novosadski Dom",
-    "Tip": "Villa",
-    "Opis": "Ne tako blizu centra , dom se nalazi na detelinari.",
-    "Adresa": "Anastasije Curcic 23a",
-    "Grad": "Novi Sad",
-    "Cena_po_noci": 50.0,
-    "Maksimalan_broj_gostiju": 4,
-    "Slika": "/Images/9f10a2ba-74fa-438f-8776-8a46b66f8419.jpg",
-    "Datum_postavljanja_oglasa": "12.06.2026",
-    "Dostupnost": true,
-    "Obrisan": false,
-    "DomacinKorisnickoIme": "zoran.milic",
-    "RecenzijaIds": []
   }
 ]

@@ -232,5 +232,37 @@ namespace ProjekatWeb.Controllers
                 recenzijaService.ObrisiLogicki(id);
             return RedirectToAction("Rezervacije");
         }
+        public ActionResult IzmeniRecenziju(string id)
+        {
+            if (!IsGost()) return RedirectToAction("Login", "Korisnik");
+
+            var recenzija = recenzijaService.NadjiPoId(id);
+            if (recenzija == null || recenzija.RecenzentKorisnickoIme != Session["korisnik"].ToString())
+                return RedirectToAction("Rezervacije");
+
+            var objekat = objekatiService.NadjiPoId(recenzija.SmestajniObjekatId);
+            ViewBag.ObjekatNaziv = objekat != null ? objekat.Naziv : "Property";
+
+            return View(recenzija);
+        }
+
+        [HttpPost]
+        public ActionResult IzmeniRecenziju(string id, string naslov, string sadrzaj, int ocena)
+        {
+            if (!IsGost()) return RedirectToAction("Login", "Korisnik");
+
+            var recenzija = recenzijaService.NadjiPoId(id);
+            if (recenzija == null || recenzija.RecenzentKorisnickoIme != Session["korisnik"].ToString())
+                return RedirectToAction("Rezervacije");
+
+            recenzija.Naslov = naslov;
+            recenzija.Sadrzaj = sadrzaj;
+            recenzija.Ocena = ocena;
+            recenzija.Status = StatusRecenzije.Kreirana;
+
+            recenzijaService.Azuriraj(recenzija);
+            return RedirectToAction("Rezervacije");
+        }
+
     }
 }

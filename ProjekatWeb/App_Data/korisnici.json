@@ -36,11 +36,7 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [
-      "obj-001",
-      "obj-002",
-      "85d1b2c8-585a-4447-a545-403f866a325e"
-    ]
+    "ObjektiIds": [ "obj-001", "obj-002", "85d1b2c8-585a-4447-a545-403f866a325e" ]
   },
   {
     "KorisnickoIme": "ivana.lukic",
@@ -53,10 +49,7 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [
-      "obj-003",
-      "obj-004"
-    ]
+    "ObjektiIds": [ "obj-003", "obj-004" ]
   },
   {
     "KorisnickoIme": "zoran.milic",
@@ -69,10 +62,7 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [
-      "obj-005",
-      "60d2ed4e-831c-4b76-82b1-254c3835f260"
-    ]
+    "ObjektiIds": [ "obj-005", "60d2ed4e-831c-4b76-82b1-254c3835f260" ]
   },
   {
     "KorisnickoIme": "marija.nikolic",
@@ -84,11 +74,7 @@
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [
-      "rez-001",
-      "rez-002",
-      "30a87212-88c6-4a37-a72f-8f6c4a7be25b"
-    ],
+    "RezervacijaIds": [ "rez-001", "rez-002", "30a87212-88c6-4a37-a72f-8f6c4a7be25b" ],
     "ObjektiIds": []
   },
   {
@@ -101,9 +87,7 @@
     "Pol": "Male",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [
-      "rez-003"
-    ],
+    "RezervacijaIds": [ "rez-003", "rez-010" ],
     "ObjektiIds": []
   },
   {
@@ -116,9 +100,7 @@
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [
-      "rez-004"
-    ],
+    "RezervacijaIds": [ "rez-004", "rez-009" ],
     "ObjektiIds": []
   },
   {
@@ -131,10 +113,7 @@
     "Pol": "Male",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [
-      "rez-005",
-      "rez-006"
-    ],
+    "RezervacijaIds": [ "rez-005", "rez-006" ],
     "ObjektiIds": []
   },
   {
@@ -147,7 +126,7 @@
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [],
+    "RezervacijaIds": [ "rez-007" ],
     "ObjektiIds": []
   },
   {
@@ -160,7 +139,7 @@
     "Pol": "Male",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [],
+    "RezervacijaIds": [ "rez-008" ],
     "ObjektiIds": []
   },
   {

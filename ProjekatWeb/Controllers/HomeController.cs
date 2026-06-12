@@ -9,12 +9,11 @@ namespace ProjekatWeb.Controllers
     public class HomeController : Controller
     {
         private ObjektiService objekatiService = new ObjektiService();
+        private RecenzijaService recenzijaService = new RecenzijaService();
 
         public ActionResult Index(string naziv, string grad, string tip, double? cenaMin, double? cenaMax, string sortBy)
         {
-            var objekti = objekatiService.GetSvi()
-                .Where(o => o.Dostupnost && !o.Obrisan)
-                .ToList();
+            var objekti = objekatiService.GetSvi().Where(o => o.Dostupnost && !o.Obrisan).ToList();
 
             
             if (!string.IsNullOrEmpty(naziv))
@@ -49,13 +48,31 @@ namespace ProjekatWeb.Controllers
                     objekti = objekti.OrderByDescending(o => o.Datum_postavljanja_oglasa).ToList(); break;
             }
 
-            
+            var prosecneOcene = new Dictionary<string, double>();
+            var brojRecenzija = new Dictionary<string, int>();
+            var sveRecenzije = recenzijaService.GetSve()
+                .Where(r => !r.Obrisana && r.Status == StatusRecenzije.Odobrena)
+                .ToList();
+
+            foreach (var o in objekti)
+            {
+                var recenzijeZaObjekat = sveRecenzije.Where(r => r.SmestajniObjekatId == o.Id).ToList();
+                if (recenzijeZaObjekat.Count > 0)
+                {
+                    prosecneOcene[o.Id] = recenzijeZaObjekat.Average(r => r.Ocena);
+                    brojRecenzija[o.Id] = recenzijeZaObjekat.Count;
+                }
+            }
+
+
             ViewBag.naziv = naziv;
             ViewBag.grad = grad;
             ViewBag.tip = tip;
             ViewBag.cenaMin = cenaMin;
             ViewBag.cenaMax = cenaMax;
             ViewBag.sortBy = sortBy;
+            ViewBag.ProsecneOcene = prosecneOcene; 
+            ViewBag.BrojRecenzija = brojRecenzija;    
 
             return View(objekti);
         }

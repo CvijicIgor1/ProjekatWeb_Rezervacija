@@ -40,7 +40,7 @@
     "Sadrzaj": "Hotel je bio fantastican. Dorucak odlican, osoblje ljubazno, pogled na planinu predivan. Definitivno se vracamo!",
     "Ocena": 5,
     "Slika": null,
-    "Status": 0,
+    "Status": 1,
     "Obrisana": false
   },
   {
@@ -51,15 +51,15 @@
     "Sadrzaj": "Za cenu koju platis zaista dobijas vrednost. Osoblje je bilo prijatno i pomocno.",
     "Ocena": 4,
     "Slika": null,
-    "Status": 2,
+    "Status": 1,
     "Obrisana": false
   },
   {
     "Id": "e1a93dd6-fe8f-449d-904d-ea66b61c0d4d",
     "SmestajniObjekatId": "obj-003",
-    "RecenzentKorisnickoIme": "marija.nikolic",
+    "RecenzentKorisnickoIme": "nikola.ilic",
     "Naslov": "Fenomenalan odnos cene i kvaliteta",
-    "Sadrzaj": "Hotel je odlican , predobar pogled , blizu centra.",
+    "Sadrzaj": "Hotel je odlican, predobar pogled, blizu centra.",
     "Ocena": 5,
     "Slika": null,
     "Status": 1,

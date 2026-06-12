@@ -181,6 +181,8 @@
         .card-actions {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .btn-otkazi {
@@ -210,6 +212,76 @@
             .btn-recenzija:hover {
                 background: rgba(116,185,255,0.3);
             }
+
+        .btn-izmeni-rec {
+            padding: 9px 20px;
+            background: rgba(255,200,0,0.15);
+            border: 1px solid rgba(255,200,0,0.4);
+            color: #ffc800;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+            .btn-izmeni-rec:hover {
+                background: rgba(255,200,0,0.25);
+            }
+
+        .btn-obrisi-rec {
+            padding: 9px 20px;
+            background: rgba(233,69,96,0.1);
+            border: 1px solid rgba(233,69,96,0.3);
+            color: rgba(255,107,138,0.8);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .btn-obrisi-rec:hover {
+                background: rgba(233,69,96,0.25);
+            }
+
+        .recenzija-sekcija {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .recenzija-info {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+            .recenzija-info .rec-naslov {
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+
+            .recenzija-info .rec-meta {
+                color: rgba(255,255,255,0.4);
+                font-size: 12px;
+                margin-bottom: 6px;
+            }
+
+            .recenzija-info .rec-status {
+                font-size: 11px;
+            }
+
+        .rec-status-kreirana {
+            color: #ffc800;
+        }
+
+        .rec-status-odobrena {
+            color: #2ed573;
+        }
+
+        .rec-status-odbijena {
+            color: #ff6b8a;
+        }
 
         .empty {
             text-align: center;
@@ -248,6 +320,9 @@
         }
         else
         {
+            ProjekatWeb.Services.RecenzijaService recenzijaService = new ProjekatWeb.Services.RecenzijaService();
+            string korisnikIme = Session["korisnik"].ToString();
+
             foreach (var r in Model)
             {
                 <div class="card">
@@ -283,9 +358,54 @@
                         }
                         @if (r.Status == StatusRezervacije.Zavrsena)
                         {
-                            <a href="/Gost/DodajRecenziju?objekatId=@r.SmestajniObjekatId" class="btn-recenzija">Leave Review</a>
+                           
+                            var postojecaRecenzija = recenzijaService.GetSve()
+                                .FirstOrDefault(rec => rec.SmestajniObjekatId == r.SmestajniObjekatId
+                                    && rec.RecenzentKorisnickoIme == korisnikIme
+                                    && !rec.Obrisana);
+
+                            if (postojecaRecenzija == null)
+                            {
+                                <a href="/Gost/DodajRecenziju?objekatId=@r.SmestajniObjekatId" class="btn-recenzija">Leave Review</a>
+                            }
                         }
                     </div>
+
+                    @{
+                        
+                        var recenzijeGosta = recenzijaService.GetSve()
+                            .Where(rec => rec.SmestajniObjekatId == r.SmestajniObjekatId
+                                && rec.RecenzentKorisnickoIme == korisnikIme
+                                && !rec.Obrisana)
+                            .ToList();
+                    }
+                    @if (recenzijeGosta.Count > 0)
+                    {
+                        <div class="recenzija-sekcija">
+                            @foreach (var rec in recenzijeGosta)
+                            {
+                                <div class="recenzija-info">
+                                    <div class="rec-naslov">@rec.Ocena/5 — @rec.Naslov</div>
+                                    <div class="rec-meta">@rec.Sadrzaj</div>
+                                    <span class="rec-status rec-status-@rec.Status.ToString().ToLower()">
+                                        @if (rec.Status == StatusRecenzije.Kreirana)
+                                        {<text>&#9679; Pending approval</text> }
+                                    else if (rec.Status == StatusRecenzije.Odobrena)
+                                    { <text>&#9679; Approved</text> }
+                                else
+                                { <text>&#9679; Rejected</text>}
+                                    </span>
+                                </div>
+                                <div style="display:flex; gap:10px;">
+                                    <a href="/Gost/IzmeniRecenziju?id=@rec.Id" class="btn-izmeni-rec">&#9998; Edit Review</a>
+                                    <form method="post" action="/Gost/ObrisiRecenziju">
+                                        <input type="hidden" name="id" value="@rec.Id" />
+                                        <button type="submit" class="btn-obrisi-rec">&#128465; Delete Review</button>
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             }
         }
