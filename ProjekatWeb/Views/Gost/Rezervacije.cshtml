@@ -385,7 +385,7 @@
                             @foreach (var rec in recenzijeGosta)
                             {
                                 <div class="recenzija-info">
-                                    <div class="rec-naslov">@rec.Ocena/5 — @rec.Naslov</div>
+                                    <div class="rec-naslov">@rec.Ocena/5 - @rec.Naslov</div>
                                     <div class="rec-meta">@rec.Sadrzaj</div>
                                     <span class="rec-status rec-status-@rec.Status.ToString().ToLower()">
                                         @if (rec.Status == StatusRecenzije.Kreirana)
