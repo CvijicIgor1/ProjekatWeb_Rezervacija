@@ -199,9 +199,10 @@
                         <label>Type</label>
                         <select name="tip">
                             <option value="Hotel" @(Model.Tip == "Hotel" ? "selected" : "")>Hotel</option>
-                            <option value="Apartman" @(Model.Tip == "Apartman" ? "selected" : "")>Apartment</option>
+                            <option value="House" @(Model.Tip == "Kuca" ? "selected" : "")>House</option>
+                            <option value="Apartment" @(Model.Tip == "Apartment" ? "selected" : "")>Apartment</option>
                             <option value="Hostel" @(Model.Tip == "Hostel" ? "selected" : "")>Hostel</option>
-                            <option value="Vila" @(Model.Tip == "Vila" ? "selected" : "")>Villa</option>
+                            <option value="Villa" @(Model.Tip == "Villa" ? "selected" : "")>Villa</option>
                         </select>
                     </div>
                     <div class="input-group">

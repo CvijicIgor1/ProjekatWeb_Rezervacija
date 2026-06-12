@@ -2,7 +2,7 @@
   {
     "Id": "obj-001",
     "Naziv": "Apartman Sunce",
-    "Tip": "Apartman",
+    "Tip": "Villa",
     "Opis": "Lep i prostran apartman u centru Beograda, idealan za porodice i parove. Potpuno opremljena kuhinja, besplatan WiFi i parking.",
     "Adresa": "Knez Mihailova 15",
     "Grad": "Beograd",
@@ -21,11 +21,11 @@
   {
     "Id": "obj-002",
     "Naziv": "Studio Centar",
-    "Tip": "Apartman",
+    "Tip": "Apartment",
     "Opis": "Moderan studio apartman blizu Trga Republike. Klimatizacija, SmartTV i brzi internet.",
     "Adresa": "Makedonska 8",
     "Grad": "Beograd",
-    "Cena_po_noci": 55.0,
+    "Cena_po_noci": 35.0,
     "Maksimalan_broj_gostiju": 2,
     "Slika": "/Images/3.jpg",
     "Datum_postavljanja_oglasa": "15/02/2024",
@@ -57,7 +57,7 @@
   {
     "Id": "obj-004",
     "Naziv": "Vikendica Tara",
-    "Tip": "Apartman",
+    "Tip": "House",
     "Opis": "Rustična vikendica u srcu prirode na Tari. Kamin, terasa sa roštiljem, idealno za odmor od gradske vreve.",
     "Adresa": "Kaluđerske bare 7",
     "Grad": "Tara",
@@ -87,21 +87,5 @@
     "RecenzijaIds": [
       "rec-005"
     ]
-  },
-  {
-    "Id": "85d1b2c8-585a-4447-a545-403f866a325e",
-    "Naziv": "Apartman la vida",
-    "Tip": "Apartman",
-    "Opis": "Apartman je u planinama",
-    "Adresa": "Anastasije Curcic 23a",
-    "Grad": "Sar Planina",
-    "Cena_po_noci": 200.0,
-    "Maksimalan_broj_gostiju": 4,
-    "Slika": "/Images/12405247-4a5e-4cb0-9277-1320ff468526.jpg",
-    "Datum_postavljanja_oglasa": "10.06.2026",
-    "Dostupnost": true,
-    "Obrisan": true,
-    "DomacinKorisnickoIme": "petar.kovac",
-    "RecenzijaIds": []
   }
 ]
