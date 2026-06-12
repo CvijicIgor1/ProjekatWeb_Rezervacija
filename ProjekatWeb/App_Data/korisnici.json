@@ -70,7 +70,8 @@
     "Obrisan": false,
     "RezervacijaIds": [],
     "ObjektiIds": [
-      "obj-005"
+      "obj-005",
+      "60d2ed4e-831c-4b76-82b1-254c3835f260"
     ]
   },
   {
@@ -78,14 +79,15 @@
     "Lozinka": "marija123",
     "Ime": "Marija",
     "Prezime": "Nikolic",
-    "Email": "marija.nikolic@gmail.com",
+    "Email": "marija.nikolic1@gmail.com",
     "DatumRodjenja": "09/07/1992",
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,
     "RezervacijaIds": [
       "rez-001",
-      "rez-002"
+      "rez-002",
+      "30a87212-88c6-4a37-a72f-8f6c4a7be25b"
     ],
     "ObjektiIds": []
   },

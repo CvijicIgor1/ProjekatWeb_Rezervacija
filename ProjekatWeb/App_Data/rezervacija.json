@@ -108,5 +108,16 @@
     "UkupnaCena": 36.0,
     "Status": 1,
     "Obrisana": false
+  },
+  {
+    "Id": "30a87212-88c6-4a37-a72f-8f6c4a7be25b",
+    "SmestajniObjekatId": "60d2ed4e-831c-4b76-82b1-254c3835f260",
+    "Gost": "marija.nikolic",
+    "DatumPrijave": "07/07/2026",
+    "DatumOdjave": "09/07/2026",
+    "BrojGostiju": 3,
+    "UkupnaCena": 100.0,
+    "Status": 0,
+    "Obrisana": false
   }
 ]

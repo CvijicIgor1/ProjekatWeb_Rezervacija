@@ -53,5 +53,16 @@
     "Slika": null,
     "Status": 2,
     "Obrisana": false
+  },
+  {
+    "Id": "e1a93dd6-fe8f-449d-904d-ea66b61c0d4d",
+    "SmestajniObjekatId": "obj-003",
+    "RecenzentKorisnickoIme": "marija.nikolic",
+    "Naslov": "Fenomenalan odnos cene i kvaliteta",
+    "Sadrzaj": "Hotel je odlican , predobar pogled , blizu centra.",
+    "Ocena": 5,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
   }
 ]
