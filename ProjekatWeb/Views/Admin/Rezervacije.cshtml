@@ -212,7 +212,7 @@
                         <td>@r.DatumOdjave</td>
                         <td>@r.BrojGostiju</td>
                         <td class="cena">$@r.UkupnaCena</td>
-                        <td><span class="badge badge-@r.Status.ToString().ToLower()">@r.Status</span></td>
+                        <td><span class="badge badge-@r.Status.ToString().ToLower()">@(r.Status == StatusRezervacije.Kreirana ? "Created" : r.Status == StatusRezervacije.Odobrena ? "Approved" : r.Status == StatusRezervacije.Otkazana ? "Cancelled" : "Completed")</span></td>
                         <td>
                             <div class="actions">
                                 @if (r.Status == StatusRezervacije.Kreirana)

@@ -180,7 +180,7 @@
         <a href="/Gost/Rezervacije" class="btn-back">&#8592; Back to reservations</a>
         <h2>Edit <span>Review</span></h2>
         <p class="subtitle">Update your review for @ViewBag.ObjekatNaziv</p>
-        <span class="status-badge">@Model.Status</span>
+        <span class="status-badge">@(Model.Status == ProjekatWeb.Models.StatusRecenzije.Kreirana ? "Created" : Model.Status == ProjekatWeb.Models.StatusRecenzije.Odobrena ? "Approved" : "Rejected")</span>
 
         <div class="info-box">
             &#8505; Editing your review will reset its status to <strong>Created</strong> and it will need to be re-approved by an administrator.

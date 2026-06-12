@@ -198,7 +198,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-naslov">@r.Naslov</div>
-                        <span class="badge badge-@r.Status.ToString().ToLower()">@r.Status</span>
+                        <span class="badge badge-@r.Status.ToString().ToLower()">@(r.Status == StatusRecenzije.Kreirana ? "Created" : r.Status == StatusRecenzije.Odobrena ? "Approved" : "Rejected")</span>
                     </div>
                     <div class="card-meta">By @r.RecenzentKorisnickoIme | Property: @r.SmestajniObjekatId</div>
                     <div class="card-meta">Rating: @r.Ocena / 5</div>

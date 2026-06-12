@@ -33,7 +33,8 @@
     "Obrisan": false,
     "DomacinKorisnickoIme": "petar.kovac",
     "RecenzijaIds": [
-      "rec-003"
+      "rec-003",
+      "rec-008"
     ]
   },
   {
@@ -69,7 +70,7 @@
     "Dostupnost": true,
     "Obrisan": false,
     "DomacinKorisnickoIme": "ivana.lukic",
-    "RecenzijaIds": []
+    "RecenzijaIds": [ "rec-006" ]
   },
   {
     "Id": "obj-005",
@@ -86,7 +87,8 @@
     "Obrisan": false,
     "DomacinKorisnickoIme": "zoran.milic",
     "RecenzijaIds": [
-      "rec-005"
+      "rec-005",
+      "rec-007"
     ]
   }
 ]

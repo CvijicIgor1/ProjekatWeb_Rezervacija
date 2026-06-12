@@ -36,7 +36,7 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [ "obj-001", "obj-002", "85d1b2c8-585a-4447-a545-403f866a325e" ]
+    "ObjektiIds": [ "obj-001", "obj-002" ]
   },
   {
     "KorisnickoIme": "ivana.lukic",
@@ -62,7 +62,7 @@
     "TipKorisnika": 1,
     "Obrisan": false,
     "RezervacijaIds": [],
-    "ObjektiIds": [ "obj-005", "60d2ed4e-831c-4b76-82b1-254c3835f260" ]
+    "ObjektiIds": [ "obj-005" ]
   },
   {
     "KorisnickoIme": "marija.nikolic",
@@ -74,7 +74,7 @@
     "Pol": "Female",
     "TipKorisnika": 0,
     "Obrisan": false,
-    "RezervacijaIds": [ "rez-001", "rez-002", "30a87212-88c6-4a37-a72f-8f6c4a7be25b" ],
+    "RezervacijaIds": [ "rez-001", "rez-002" ],
     "ObjektiIds": []
   },
   {

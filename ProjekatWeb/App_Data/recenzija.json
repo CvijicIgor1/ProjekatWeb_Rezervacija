@@ -14,11 +14,11 @@
     "Id": "rec-002",
     "SmestajniObjekatId": "obj-001",
     "RecenzentKorisnickoIme": "nikola.ilic",
-    "Naslov": "Vrlo dobro",
+    "Naslov": "Odlicno",
     "Sadrzaj": "Apartman je bio udoban i cist. Domacin je bio ljubazan i dostupan. Jedina zamerka je buka sa ulice.",
-    "Ocena": 4,
+    "Ocena": 5,
     "Slika": null,
-    "Status": 1,
+    "Status": 0,
     "Obrisana": false
   },
   {
@@ -61,6 +61,39 @@
     "Naslov": "Fenomenalan odnos cene i kvaliteta",
     "Sadrzaj": "Hotel je odlican, predobar pogled, blizu centra.",
     "Ocena": 5,
+    "Slika": null,
+    "Status": 1,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-006",
+    "SmestajniObjekatId": "obj-004",
+    "RecenzentKorisnickoIme": "nikola.ilic",
+    "Naslov": "Mir i priroda, ali ima zamerki",
+    "Sadrzaj": "Vikendica je na sjajnoj lokaciji i kamin je odlican, ali kuhinja je bila slabo opremljena a ulaz malo zapusten. Sve u svemu pristojno za tu cenu.",
+    "Ocena": 3,
+    "Slika": null,
+    "Status": 0,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-007",
+    "SmestajniObjekatId": "obj-005",
+    "RecenzentKorisnickoIme": "ana.popovic",
+    "Naslov": "Nije za svakoga",
+    "Sadrzaj": "Hostel je bucan i sobe su pretrpane. Kuhinja je bila neuredna tokom celog boravka. Ne bih se vratila.",
+    "Ocena": 2,
+    "Slika": null,
+    "Status": 2,
+    "Obrisana": false
+  },
+  {
+    "Id": "rec-008",
+    "SmestajniObjekatId": "obj-002",
+    "RecenzentKorisnickoIme": "marija.nikolic",
+    "Naslov": "Idealno za kratak odmor",
+    "Sadrzaj": "Studio je mali ali funkcionalan, sve je novo i čisto. Tiha zgrada, brz odgovor domaćina na poruke.",
+    "Ocena": 4,
     "Slika": null,
     "Status": 1,
     "Obrisana": false
