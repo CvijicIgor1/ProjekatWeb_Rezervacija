@@ -179,8 +179,8 @@
                 <div class="readonly-field">@Model.KorisnickoIme</div>
             </div>
 
-            @using (Html.BeginForm("Profil", "Domacin", FormMethod.Post))
-            {
+            <form action="/Domacin/Profil" method="post">
+
                 <div class="row">
                     <div class="form-group">
                         <label>First Name</label>
@@ -191,10 +191,12 @@
                         <input type="text" name="prezime" value="@Model.Prezime" required />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" name="email" value="@Model.Email" required />
                 </div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Date of Birth</label>
@@ -208,8 +210,9 @@
                         </select>
                     </div>
                 </div>
+
                 <button type="submit" class="btn-submit">Save Changes</button>
-            }
+            </form>
         </div>
     </div>
 </body>

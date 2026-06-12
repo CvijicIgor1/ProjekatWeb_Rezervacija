@@ -192,6 +192,7 @@
             border-radius: 8px;
             margin-bottom: 22px;
         }
+
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -224,22 +225,21 @@
         }
 
         <div class="card">
-            @using (Html.BeginForm("DodajObjekat", "Domacin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+            <form action="/Domacin/DodajObjekat" method="post" enctype="multipart/form-data">
+
                 <div class="form-group">
                     <label>Property Name</label>
                     <input type="text" name="naziv" placeholder="e.g. Cozy Apartment in City Center" required />
                 </div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Type</label>
                         <select name="tip" required>
                             <option value="">-- Select type --</option>
                             <option value="Hotel">Hotel</option>
-                            <option value="House">House</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Hostel">Hostel</option>
-                            <option value="Villa">Villa</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -247,10 +247,12 @@
                         <input type="number" name="maxGostiju" min="1" max="50" placeholder="e.g. 4" required />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Description</label>
                     <textarea name="opis" placeholder="Describe your property..."></textarea>
                 </div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Address</label>
@@ -261,22 +263,26 @@
                         <input type="text" name="grad" placeholder="e.g. Belgrade" required />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Price per Night ($)</label>
                     <input type="number" name="cena" step="0.01" min="1" placeholder="e.g. 75.00" required />
                 </div>
+
                 <div class="form-group">
                     <label>Property Image</label>
                     <input type="file" name="slika" accept="image/*" required />
                 </div>
+
                 <div class="form-group">
                     <div class="checkbox-group">
                         <input type="checkbox" name="dostupnost" id="dostupnost" value="true" checked />
                         <label for="dostupnost">Available for booking</label>
                     </div>
                 </div>
+
                 <button type="submit" class="btn-submit">&#43; Add Property</button>
-            }
+            </form>
         </div>
     </div>
 </body>

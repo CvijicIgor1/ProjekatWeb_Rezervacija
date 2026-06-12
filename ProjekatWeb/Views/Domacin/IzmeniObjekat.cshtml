@@ -199,6 +199,7 @@
             .btn-submit:hover {
                 opacity: 0.9;
             }
+
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
@@ -226,11 +227,11 @@
         </div>
 
         <div class="card">
-            @using (Html.BeginForm("IzmeniObjekat", "Domacin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+            <form action="/Domacin/IzmeniObjekat" method="post" enctype="multipart/form-data">
+
                 <input type="hidden" name="id" value="@Model.Id" />
 
-                if (!string.IsNullOrEmpty(Model.Slika))
+                @if (!string.IsNullOrEmpty(Model.Slika))
                 {
                     <img src="@Model.Slika" alt="@Model.Naziv" class="current-img" />
                     <p class="img-hint">Leave image field empty to keep current image.</p>
@@ -240,15 +241,14 @@
                     <label>Property Name</label>
                     <input type="text" name="naziv" value="@Model.Naziv" required />
                 </div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Type</label>
                         <select name="tip" required>
                             <option value="Hotel" @(Model.Tip == "Hotel" ? "selected" : "")>Hotel</option>
-                            <option value="House" @(Model.Tip == "House" ? "selected" : "")>House</option>
                             <option value="Apartment" @(Model.Tip == "Apartment" ? "selected" : "")>Apartment</option>
                             <option value="Hostel" @(Model.Tip == "Hostel" ? "selected" : "")>Hostel</option>
-                            <option value="Villa" @(Model.Tip == "Villa" ? "selected" : "")>Villa</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -256,10 +256,12 @@
                         <input type="number" name="maxGostiju" min="1" max="50" value="@Model.Maksimalan_broj_gostiju" required />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Description</label>
                     <textarea name="opis">@Model.Opis</textarea>
                 </div>
+
                 <div class="row">
                     <div class="form-group">
                         <label>Address</label>
@@ -270,22 +272,26 @@
                         <input type="text" name="grad" value="@Model.Grad" required />
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label>Price per Night ($)</label>
                     <input type="number" name="cena" step="0.01" min="1" value="@Model.Cena_po_noci" required />
                 </div>
+
                 <div class="form-group">
                     <label>Change Image (optional)</label>
                     <input type="file" name="slika" accept="image/*" />
                 </div>
+
                 <div class="form-group">
                     <div class="checkbox-group">
                         <input type="checkbox" name="dostupnost" id="dostupnost" value="true" @(Model.Dostupnost ? "checked" : "") />
                         <label for="dostupnost">Available for booking</label>
                     </div>
                 </div>
+
                 <button type="submit" class="btn-submit">Save Changes</button>
-            }
+            </form>
         </div>
     </div>
 </body>
